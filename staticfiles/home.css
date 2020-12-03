@@ -1,0 +1,104 @@
+/* Global styles  */
+
+section{
+    min-height: 100vh;
+}
+
+.main-svg{
+    position: absolute;
+}
+
+.main-page{
+    display: flex;
+    justify-items: right;
+    align-items: center;
+    height: 90vh;
+    /* background-image: url(../static/images/fruits.webp); */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+button{
+    outline: none;
+    border: none;
+}
+
+button:focus{
+    outline: none;
+    border: none;
+}
+
+.cst-btn {
+    width: 200px;
+    height: 50px;
+    border-radius: 32px;
+    margin-top: 2em;
+}
+
+.dark-btn{
+    background: #030301;
+    color: white;
+    box-shadow: -5px -5px 30px rgba(255, 255, 255, 0.25), 0px 19px 30px -14px rgba(0, 0, 0, 0.25);
+}
+.light-btn{
+    color: black;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px -8px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+}
+
+.main-page #main-title{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 100px;
+    line-height: 100%;
+}
+
+
+/* sec2 */
+#farmers , #buyers,#top-p{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 100%;
+}
+#farmers{
+    max-width: 40vw;
+}
+#buyers{
+    max-width: 60vw;
+}
+/* Section 4 */
+#top-p{
+    margin-bottom: 44px;
+}
+
+.lg-bg{
+    box-shadow: 0px -50px 0px 0px #08FFD3 inset;
+}
+
+.products-cont{
+    transform: translateY(-80px);
+}
+
+.card{
+    border: none !important;
+}
+
+.card-img-top{
+    object-fit: cover;
+}
+
+.star{
+    cursor: pointer;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    border: none !important;
+}
+
+

@@ -1,0 +1,86 @@
+{% include 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% block content%}
+
+    
+<section class="main-page" id="sec1">
+    <div class="container">
+        <h1 id="main-title">Sell your crops online.</h1>
+        <a href="{% url 'shop' %}">
+            <button class="cst-btn dark-btn">Shop Now</button>
+        </a>
+        <svg class="main-svg"  viewBox="0 0 1155 2511" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M499 4C616.335 42.6677 723.628 171.142 744.006 294.5M1194 2505.5C1022.18 2512.11 922.498 2500.83 756.5 2456C466.017 2377.55 48.0638 2083.81 7.2025 1753.5M747.195 324.5C761.405 649.124 55.7047 542.592 72 882.5C75.6599 958.844 121.35 1012.09 166.5 1063.07M186.5 1085.77C232.035 1138.27 270.216 1191.66 254 1269C227.614 1394.84 99.0688 1406.57 44.5 1523C13.0367 1590.13 1.04029 1657.43 4.54728 1723.5" stroke="#976FFB" stroke-opacity="0.26" stroke-width="7" stroke-linecap="round" stroke-dasharray="20 20"/>
+            <circle cx="745.5" cy="309.5" r="9.67241" fill="#976FFB"/>
+            <path d="M762 309.5C762 318.613 754.613 326 745.5 326C736.387 326 729 318.613 729 309.5C729 300.387 736.387 293 745.5 293C754.613 293 762 300.387 762 309.5ZM732.3 309.5C732.3 316.79 738.21 322.7 745.5 322.7C752.79 322.7 758.7 316.79 758.7 309.5C758.7 302.21 752.79 296.3 745.5 296.3C738.21 296.3 732.3 302.21 732.3 309.5Z" fill="#976FFB"/>
+        </svg>
+    </div>
+
+</section>
+
+<!-- Second section -->
+<section class="" id="sec2">
+    <div class="container">
+        <h1 id="farmers">Are you a <b>farmer</b> who gives <b>food</b> to <b>everyone</b>?</h1>
+        <a href="{% url 'create-product' %}">
+            <button class="cst-btn light-btn">Sell Now</button>
+        </a>
+    </div>
+</section>
+
+<!-- Third section -->
+<section class="" id="sec3">
+    <div class="container">
+        <h1 id="buyers">Would you like to <b>buy directly</b> from the farmers?</h1>
+        <a href="{% url 'shop' %}">
+            <button class="cst-btn light-btn">Buy Now</button>
+        </a>
+    </div>
+</section>
+
+<section id="sec4">
+    <div class="container">
+        <div class="products-cont">
+            <h1 id="top-p"><b>Top</b> <span class="lg-bg" >products</span> </h1>
+
+            <div class="row">
+                {% for product in products  %}
+                <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            {% if product.image %}
+                            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap" height="200px">
+                            {% else %}
+                            <img class="card-img-top" src="" alt="Card image cap" height="200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                    </div>
+                                    <div class="col-8">
+        
+                                        <span class="material-icons star">star</span>
+                                        <span class="material-icons star">star</span>
+                                        <span class="material-icons star">star</span>
+                                        <span class="material-icons star">star</span>
+                                        <span class="material-icons star">star_border</span>
+                                    </div>
+                                </div>
+        
+                            <p class="card-text">{{ product.detail }}</p>
+                            <a href="{{product.add_to_cart}}" class="btn btn-primary">Buy</a>
+                            </div>
+                        </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<script src="{% static 'home.js' %}"></script>
+{% block script %}
+{% endblock %}

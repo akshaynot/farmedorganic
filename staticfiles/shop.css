@@ -1,0 +1,48 @@
+/* Main text  */
+.main-text{
+    text-align: center;
+    margin-top: 5em;
+    margin-bottom: 4em;
+}
+
+.main-text h1{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 100%;
+    color: #264653;
+}
+.main-text h2{
+    color: #264653;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 100%;
+}
+
+/* Search and Filter */
+form{
+    margin-bottom: 8em;
+}
+.search{
+    width: 100%;
+}
+.shop-form{
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    color: 959595;
+}
+
+#search-input{
+    width: 100%;
+}
+
+#search-filter , option{
+    float: right;
+    margin-right: 2em;
+    border: 1.5px solid #959595;;
+    background-color: none !important;
+}

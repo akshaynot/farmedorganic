@@ -1,0 +1,1 @@
+web: gunicorn fowebsite.wsgi --log-file -

@@ -1,0 +1,74 @@
+{% include 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+<link rel="stylesheet" href="{% static 'shop.css' %}">
+{% block content%}
+
+<section class="main-page" id="sec1">
+
+    <div class="container">
+        <!-- Main Title -->
+        <div class="main-text">
+            <h1 class="mb-4">Crops that you want to buy</h1>
+            <h2>Find all types of crops directly from farmers</h2>
+        </div>
+        <!-- Search and Filter -->
+        <form action="">
+            <div class="row search">
+                <div class="col d-flex">
+                    <form action="{% url 'shop_search' %}" method="get">
+                        <input name="q" class="shop-form" id="search-input" type="text" placeholder="Search">
+                    </form>
+                    <button class="btn" type="submit">Search</button>
+                </div>
+                <!-- <div class="col-md-3">
+                    <select class="shop-form" id="search-filter"  name="" id="">
+                        <option value="views">Views</option>
+                        <option value="rating">Rating</option>
+                        <option value="showing">Views</option>
+                    </select>
+                </div> -->
+            </div>
+        </form>
+
+        <!-- Products -->
+        <div class="row">
+            {% for product in object_list  %}
+            <div class="col-md-4 my-3">
+                    <div class="card" style="width: 18rem;">
+                        {% if product.image %}
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap" height="200px">
+                        {% else %}
+                        <img class="card-img-top" src="" alt="Card image cap" height="200px">
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                </div>
+                                <div class="col-8">
+    
+                                    <span class="material-icons star">star</span>
+                                    <span class="material-icons star">star</span>
+                                    <span class="material-icons star">star</span>
+                                    <span class="material-icons star">star</span>
+                                    <span class="material-icons star">star_border</span>
+                                </div>
+                            </div>
+    
+                        <p class="card-text">{{ product.detail }}</p>
+                        <a href="#" class="btn btn-primary">Buy</a>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+<script src="{% static 'shop.js' %}"></script>
+{% block script %}
+{% endblock %}

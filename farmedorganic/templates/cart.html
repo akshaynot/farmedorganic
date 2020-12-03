@@ -1,0 +1,78 @@
+{% include 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'cart.css' %}">
+{% block content%}
+
+<!-- Cart Table -->
+
+<section id="sec1">
+    <div class="container">
+        <h1 id="main-title" class="my-5">Cart</h1>
+        <div class="row cart-row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class=" table-col col-md-4"> Items</div>
+                    <div class=" table-col col-md-2"> Quantity </div>
+                    <div class=" table-col col-md-2"> Price </div>
+                    <div class=" table-col col-md-2"> Discount </div>
+                    <div class=" table-col col-md-2"> Total </div>
+                </div>
+                {% if items %}
+                {% for item in items  %}
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4"> {{item.product.name}} </div>
+                        <div class="col-md-2 qnt">
+                            <input type="number" name="quantity" value="{{item.quantity}}"  required="" id="id_quantity">    
+                         </div>
+                        <div class="col-md-2 itemprice"> {{item.price}} </div>
+                        <div class="col-md-2 itemdiscount"> {{item.product.discount}} </div>
+                        <div class="col-md-2 total">{{item.total}}</div>
+                    </div>
+                {% endfor %}
+                {% endif %}
+                <hr>
+            </div>
+            <div class="col-md-4 orders">
+                <div class="order-title">
+                    <h1>Order Summary</h1>
+                </div>
+                <div class="os-rates">
+                    <hr>
+                    <div class="row os-title">
+                        <div class="col">Sub-Total</div>
+                        <div class="col text-right">{{subtotal}}</div>
+                    </div>
+                    <div class="row os-title">
+                        <div class="col">Tax</div>
+                        <div class="col text-right">{{tax}}</div>
+                    </div>
+                    <hr>
+                    <div class="row os-title">
+                        <div class="col">Total</div>
+                        <div class="col text-right">{{total}}</div>
+                    </div>
+                </div>
+                
+                <disv class="os-promo text-left">
+                    <p>Have a <b> <a href="">promo code</a></b> ? Add in next step</p>
+                </disv>
+                <a href="">
+                    <button class="cst-btn mb-3" >Checkout</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<script>
+    var price = parseFloat($(".itemprice")); 
+    console.log(price);
+    // $("#total")[0].innerText = total;
+</script>
+
+<script src="{% static 'home.js' %}"></script>
+{% block script %}
+{% endblock %}

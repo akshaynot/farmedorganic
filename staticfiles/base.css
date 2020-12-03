@@ -1,0 +1,26 @@
+body{
+    background-color:#EFEFEF;
+    overflow-x: hidden;
+}
+
+
+@media screen and (min-width:600px){
+    .navbar{
+        display: flex !important;
+        justify-content: right !important;
+        overflow: hidden;
+    }
+}
+
+.profile-img img{
+    width: 35px;
+    height:35px;
+    object-fit: cover;
+}
+
+.nav-item , .nav-link{
+    display: flex !important;
+    justify-items: center !important;
+    align-items: center !important;
+}
+
