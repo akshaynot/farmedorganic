@@ -89,9 +89,14 @@ WSGI_APPLICATION = 'fowebsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'dfiut9ejuci1g5 ',
+        'HOST': 'ec2-54-208-233-243.compute-1.amazonaws.com',
+        'PORT':5432,
+        'USER': 'lmwqvlnqhhudwf',
+        'PASSWORD': 'ee6e3cd80ef3ef0a8ca5f351825b03fcc153b9a6a1484ca6faec7dba9fa5c888' 
     }
 }
+
 
 
 # Password validation
