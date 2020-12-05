@@ -8,7 +8,6 @@ body{
     .navbar{
         display: flex !important;
         justify-content: right !important;
-        overflow: hidden;
     }
 }
 
@@ -24,3 +23,6 @@ body{
     align-items: center !important;
 }
 
+.navbar{
+    overflow: visible !important;
+}
