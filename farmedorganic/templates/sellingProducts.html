@@ -2,7 +2,7 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'profile.css' %}">
-<link rel="stylesheet" href="{% static 'shop.css' %}">
+
 {% block content%}
 
 <section class="main-page" id="sec1">
@@ -10,29 +10,8 @@
     <div class="container">
         <!-- Main Title -->
         <div class="main-text">
-            <h1 class="mb-4">Crops that you want to buy</h1>
-            <h2>Find all types of crops directly from farmers</h2>
+            <h1 class="mb-4">Your Products</h1>
         </div>
-        <!-- Search and Filter -->
-        <form action="{% url 'shop-search' %}" method="Get">
-            <div class="row search">
-                <div class="col d-flex">
-                        <input name="q" class="shop-form" id="search-input" type="text" placeholder="Search">
-                    <a href="{% url 'shop-search' %}/">
-                        <button type="submit" class="btn">Search</button>
-                    </a>
-                    
-                </div>
-
-                <!-- <div class="col-md-3">
-                    <select class="shop-form" id="search-filter"  name="" id="">
-                        <option value="views">Views</option>
-                        <option value="rating">Rating</option>
-                        <option value="showing">Views</option>
-                    </select>
-                </div> -->
-            </div>
-        </form>
 
         <!-- Products -->
         <div class="row">
@@ -69,6 +48,7 @@
     </div>
 
 </section>
+
 {% endblock %}
 
 <script src="{% static 'shop.js' %}"></script>

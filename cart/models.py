@@ -17,11 +17,19 @@ class CartItem(models.Model):
     quantity    = models.IntegerField(default=1)
     price       = models.FloatField(blank=True)
     cart        = models.ForeignKey('Cart', on_delete=models.CASCADE)
-
     TAX_AMOUNT = 19.25
 
-    def price_total(self):
-        return self.price * (1 + TAX_AMOUNT/100.0)
+    def dtotal(self):
+        return (self.price - self.product.discount ) * self.quantity
+
+    def sprice(self):
+        return self.price
+
+    def discount(self):
+        return self.product.discount
+
+    def qnt(self):
+        return self.quantity
 
     def __str__(self):
         return  self.product.name

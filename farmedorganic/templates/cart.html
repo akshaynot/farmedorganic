@@ -24,11 +24,12 @@
                     <div class="row">
                         <div class="col-md-4"> {{item.product.name}} </div>
                         <div class="col-md-2 qnt">
-                            <input type="number" name="quantity" value="{{item.quantity}}"  required="" id="id_quantity">    
+                            <input type="number" name="quantity" value="{{item.qnt}}"  required="" id="id_quantity">    
                          </div>
-                        <div class="col-md-2 itemprice"> {{item.price}} </div>
-                        <div class="col-md-2 itemdiscount"> {{item.product.discount}} </div>
-                        <div class="col-md-2 total">{{item.total}}</div>
+                        <div class="col-md-2 itemprice"> {{item.sprice}} </div>
+                        <div class="col-md-2 itemdiscount"> {{item.discount}} </div>
+                        <div class="col-md-2 total">{{item.dtotal}}</div>
+
                     </div>
                 {% endfor %}
                 {% endif %}

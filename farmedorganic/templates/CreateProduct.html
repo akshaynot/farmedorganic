@@ -9,11 +9,20 @@
 
     <div class="container">
         <h1>Post your products details</h1>
-        <form action="">
+        <form action="" method="Post">
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit"> Submit </button>
+        
+            <div class="d-flex ">
+                <div class="col">
+                    <a class="btn btn-primary" href="">Add new</a>
+                </div>
+                <div class="col">
+                    <button  class=" btn btn-success" type="submit"> Submit </button>
+                </div>
+            </div>
         </form>
+
     </div>
 
 </section>

@@ -6,31 +6,20 @@ from products.models import Product
 from .models import Cart , CartItem
 
 
+
 @login_required
 def cart(request):
     this_user = Cart.objects.get(User=request.user)
     this_Cart = CartItem.objects.filter(cart=this_user)
+
     if this_Cart.exists():
         items = CartItem.objects.all()
-        total = 0;
-        stotal = 0;
-        ototal = 0;
-        for i in items:
-            total = (i.price-i.product.discount)*i.quantity
-            i.total = total
-            i.save()
-            stotal += total
-
-        tax = stotal*(2/100)
-        ototal = stotal+tax
     else:
         print("Cart don't exist")
         items = None
+    
     context = {
         'items':items,
-        'subtotal':stotal,
-        'tax':tax,
-        'total':ototal,
     }
     return render(request,"cart.html",context)
 
@@ -54,3 +43,4 @@ def add_to_cart(request,slug):
     # obj = Cart.objects.all().filter(User=this_user).get().products.all()
     print(CartItem.objects.all())        
     return redirect("cart")
+

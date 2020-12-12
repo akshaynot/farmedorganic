@@ -27,16 +27,6 @@ def profile(request):
     }
     return render(request,"profile.html",context)
 
-def CreateProduct(request):
-    Pform = ProductForm 
-    form = Pform(request.POST or None, request.FILES or None) 
-    if form.is_valid:
-        print(form.data['owner'])
-    context = {
-        'form' : Pform 
-    }
-    return render(request,"CreateProduct.html",context)
-
 
 
 class ShopView(ListView):
@@ -46,9 +36,20 @@ class ShopView(ListView):
 class SearchResultView(ListView):
     model = Product
     template_name = 'shop.html'
+
     def get_queryset(self): # new
         query = self.request.GET.get('q')
-        object_list = Product.objects.filter(
+        object_list =Product.objects.filter(
             Q(name=query) or Q(name=query)
         )
+        return object_list
+
+# @login_required
+class SellersView(ListView):
+    model = Product
+    template_name = 'sellingProducts.html'
+
+    def myproducts(request): # new
+        user = request.user
+        object_list =Product.objects.filter(Q(owner=user))
         return object_list
