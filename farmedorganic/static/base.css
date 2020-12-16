@@ -26,3 +26,25 @@ body{
 .navbar{
     overflow: visible !important;
 }
+
+
+.cart_logo{
+    position: relative;
+}
+
+.cart_count{
+    background-color: red;
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: -5px;
+    width: 20px;
+    max-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: white;
+}

@@ -1,0 +1,33 @@
+{% include 'base.html' %}
+{% load static %}
+
+<!-- <link rel="stylesheet" href="{% static 'profile.css' %}"> -->
+<!-- <link rel="stylesheet" href="{% static 'shop.css' %}"> -->
+{% block content%}
+
+<section class="main-page" id="sec1">
+
+    <div class="container">
+        <h1>Post your products details</h1>
+        <form action="{% url 'profile' %}" method="Post">
+            {% csrf_token %}
+            {{form.as_p}}
+        
+            <div class="d-flex ">
+                <div class="col">
+                    <a class="btn btn-primary" href="">Add new</a>
+                </div>
+                <div class="col">
+                    <button  class=" btn btn-success" type="submit"> Submit </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+{% endblock %}
+
+<!-- <script src="{% static 'shop.js' %}"></script> -->
+{% block script %}
+{% endblock %}

@@ -18,18 +18,24 @@ class Product(models.Model):
     quantity  = models.IntegerField(blank =True , null=True , default=0)          
     category  = models.CharField(max_length=100 ,blank=True)                
     total     = models.IntegerField(null=True,blank=True)
-    
-    def add_to_cart(self):
-        return reverse("add-to-cart" , kwargs={
-            'slug':self.slug
-            })
 
-    def __str__(self):
-        return self.name
+    def add_to_cart(self):
+        if self.slug:
+            return reverse("add-to-cart" , kwargs={
+                'slug':self.slug
+                })
+        else:
+            pass
+
+    
+
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
 
 
 class Rating(models.Model):

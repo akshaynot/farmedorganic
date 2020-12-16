@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'products',
     'orders',
     'cart',
+    'users',
 ]
 
 SITE_ID = 1
@@ -143,3 +144,5 @@ STATIC_URL = '/static/'
 # ALlauth settings
 
 ACCOUNT_LOGOUT_ON_GET = True
+
+ACCOUNT_ADAPTER = 'users.allauth.AccountAdapter'

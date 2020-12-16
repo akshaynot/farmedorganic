@@ -1,29 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import *
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required 
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, ListView , CreateView , UpdateView , DeleteView , FormView
 from django.db.models import Q # new
 from products.models import Product
 from django.contrib.auth.models import User
 from .forms import ProductForm
+from django.http import JsonResponse
+
 # Create your views here.
 
 def home(request):
-    user = User
     products = Product.objects.all()
-
+    
     context = {
         'products':products,
-        'user':user,
     }
     return render(request,"home.html",context)
 
 @login_required
 def profile(request):
-    user = User.objects.get(username=request.user)
+    user = request.user
+    object_list =Product.objects.filter(Q(owner=user))
+
     context = {
         'user':user,
+        'products':object_list,
     }
     return render(request,"profile.html",context)
 
@@ -44,12 +48,35 @@ class SearchResultView(ListView):
         )
         return object_list
 
-# @login_required
+@method_decorator(login_required, name='dispatch')
 class SellersView(ListView):
     model = Product
     template_name = 'sellingProducts.html'
-
-    def myproducts(request): # new
-        user = request.user
+    context_object_name = 'product'
+   
+    def get_context_data(self, **kwargs):
+        user = self.request.user
         object_list =Product.objects.filter(Q(owner=user))
+        # Call the base implementation first to get a context
+        print(len(object_list))
+        context = {
+            'products':object_list
+        }
+        return context
+     
+
+@method_decorator(login_required,name='dispatch')
+class UpdateProductView(UpdateView):
+    model = Product
+    template_name = 'UpdateProduct.html'
+    fields = ['name' ,'owner' ,'detail' ,'discount' ,'image','quantity' ,'category']
+    
+    def form_valid(self, form):
+        print("Working")
+        return super().form_valid(form)
+
+    def myproducts(request,slug): # new
+        user = request.user
+        object_list =Product.objects.filter(Q(slug=slug))    
         return object_list
+    

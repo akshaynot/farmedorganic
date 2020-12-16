@@ -7,5 +7,6 @@ from . import views
 urlpatterns = [
     path('cart', views.cart,  name='cart'),
     path('<slug>/add-to-cart/', views.add_to_cart,  name='add-to-cart'),
+    path('<int:id>/remove-from-cart/', views.remove_from_cart,  name='remove-from-cart'),
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

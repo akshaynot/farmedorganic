@@ -9,5 +9,5 @@ urlpatterns = [
     path('',include('farmedorganic.urls')),
     path('home/',include('farmedorganic.urls')),
     path('', include('cart.urls')),
-    path('products', include('products.urls')),
+    path('products/', include('products.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
