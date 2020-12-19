@@ -38,7 +38,7 @@
                 <a class="nav-link mx-3 cart_logo" href="{% url 'cart' %}">
                     <span class="material-icons orange600 ">shopping_cart</span>
                     {% if request.user.is_authenticated %}
-                    <span class="cart_count" id="cart_count"></span>
+                    <span class="cart_count" id="cart_count">{{cart_count}}</span>
                     {% endif %}
                 </a>
                 </li>

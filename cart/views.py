@@ -12,6 +12,7 @@ from django.shortcuts import get_object_or_404
 from .models import Cart , CartItem
 from products.models import Product
 
+cart_count = 0
 
 @login_required
 def cart(request):
@@ -20,9 +21,10 @@ def cart(request):
     subtotal = 0
     total = 0
     tax =0
+
     if this_Cart.exists():
         items = CartItem.objects.all()
-        
+
         for i in items:
             subtotal += i.dtotal()
         total = subtotal-tax
@@ -54,10 +56,11 @@ def cart(request):
         else:
             print(" Cart don't exist.")
    
-    
+    cart_count =  CartItem.objects.all().count
 
     context = {
         'items':items,
+        'cart_count':cart_count,
         'subtotal':subtotal,
         'tax':tax,
         'total':total,
@@ -81,9 +84,6 @@ def add_to_cart(request,slug):
         newCart = CartItem(product=this_product ,price=3000,cart=this_user)    
         newCart.save()
 
-    # this_product[0].save()
-    # obj = Cart.objects.all().filter(User=this_user).get().products.all()
-    print(CartItem.objects.all())        
     return redirect("cart")
 
 # removing itmes from cart

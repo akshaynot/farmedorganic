@@ -8,26 +8,29 @@ from django.db.models import Q # new
 from products.models import Product
 from django.contrib.auth.models import User
 from .forms import ProductForm
+from cart.models import CartItem , Cart
 from django.http import JsonResponse
 
 # Create your views here.
-
 def home(request):
     products = Product.objects.all()
-    
+    car_count = CartItem.objects.all().count()
     context = {
         'products':products,
+        'cart_count':car_count,
     }
     return render(request,"home.html",context)
 
 @login_required
 def profile(request):
     user = request.user
+    car_count = CartItem.objects.all().count()
     object_list =Product.objects.filter(Q(owner=user))
 
     context = {
         'user':user,
         'products':object_list,
+        'cart_count':car_count,
     }
     return render(request,"profile.html",context)
 
@@ -36,6 +39,18 @@ def profile(request):
 class ShopView(ListView):
     model = Product
     template_name = 'shop.html'
+# Getting context of Shop View
+    def get_context_data(self, **kwargs):
+        user = self.request.user
+        object_list =Product.objects.all()
+        # Call the base implementation first to get a context
+        car_count = CartItem.objects.all().count()
+        context = {
+            'object_list':object_list,
+            'cart_count':car_count,
+        }
+        return context
+    
 
 class SearchResultView(ListView):
     model = Product
@@ -58,9 +73,10 @@ class SellersView(ListView):
         user = self.request.user
         object_list =Product.objects.filter(Q(owner=user))
         # Call the base implementation first to get a context
-        print(len(object_list))
+        car_count = CartItem.objects.all().count()
         context = {
-            'products':object_list
+            'products':object_list,
+            'cart_count':car_count
         }
         return context
      
