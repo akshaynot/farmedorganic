@@ -28,7 +28,7 @@ class CartItem(models.Model):
 
 
     def sprice(self):
-        return self.price
+        return self.product.price
 
     def discount(self):
         return self.product.discount
