@@ -11,9 +11,8 @@ from .forms import ProductForm
 def CreateProduct(request):
     Pform = ProductForm 
     form = Pform(request.POST or None, request.FILES or None)
-
+    
     if form.is_valid():
-
         Pform = form
         name = Pform.cleaned_data['name']
         owner = request.user
@@ -23,7 +22,6 @@ def CreateProduct(request):
         image = Pform.cleaned_data['image']
         quantity = Pform.cleaned_data['quantity']    
         category = Pform.cleaned_data['category']
-
         
         # Creating product for validation
         NewProduct = Product(name=name,owner=owner,detail=detail,
@@ -40,9 +38,6 @@ def CreateProduct(request):
 
     else:
         pass
-        
-
-
     context = {
         'form' : Pform 
     }

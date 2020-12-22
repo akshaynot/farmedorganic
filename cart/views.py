@@ -32,6 +32,8 @@ def cart(request):
             tax =0
         else:
             tax =20
+            total = subtotal-tax
+
     else:
         print("Cart don't exist")
         items = None
