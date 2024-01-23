@@ -1,6 +1,6 @@
 # Farmed Organic
 
-Website for Farmers to Sell there crops directly to the consumer or companies 
+Website for Farmers to Sell their crops directly to the consumer or companies 
 
 ## Getting Started
 
